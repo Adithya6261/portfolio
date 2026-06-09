@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:get/get.dart' hide ContextExtensionss;
 
 import '../../../../app/constants/breakpoints.dart';
 import '../../../../app/theme/app_colors.dart';
@@ -21,13 +21,13 @@ class HeroContentColumn extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: const [
         HeroEyebrow(),
-        SizedBox(height: 22),
+        SizedBox(height: 14),
         HeroBigName(),
-        SizedBox(height: 24),
+        SizedBox(height: 16),
         HeroSubtext(),
-        SizedBox(height: 34),
+        SizedBox(height: 20),
         HeroCtaRow(),
-        SizedBox(height: 32),
+        SizedBox(height: 20),
         HeroRatingBadge(),
       ],
     );
@@ -66,9 +66,9 @@ class HeroBigName extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final fontSize = context.responsive<double>(
-      mobile: 44,
-      tablet: 72,
-      desktop: 96,
+      mobile: 36,
+      tablet: 52,
+      desktop: 64,
     );
     final style = Theme.of(context).textTheme.displayLarge?.copyWith(
           fontSize: fontSize,
@@ -76,18 +76,18 @@ class HeroBigName extends StatelessWidget {
           letterSpacing: -3,
           fontWeight: FontWeight.w900,
         );
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.baseline,
+      textBaseline: TextBaseline.alphabetic,
       children: [
-        Text('ADITHYA', style: style),
-        const SizedBox(height: 4),
+        Text('FLUTTER', style: style),
+        const SizedBox(width: 18),
         GradientText(
-          'VARDHAN',
+          'DEVELOPER',
           style: style,
           gradient: AppColors.textGradient(),
         ),
-        const SizedBox(height: 4),
-        Text('REDDY', style: style),
       ],
     );
   }

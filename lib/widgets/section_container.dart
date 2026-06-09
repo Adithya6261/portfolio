@@ -21,9 +21,9 @@ class SectionContainer extends StatelessWidget {
       desktop: 48,
     );
     final vertical = context.responsive<double>(
-      mobile: 64,
-      tablet: 80,
-      desktop: 112,
+      mobile: 24,
+      tablet: 28,
+      desktop: 32,
     );
     return Container(
       key: sectionKey,
