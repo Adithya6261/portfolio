@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart' hide ContextExtensionss;
 
-import '../../../app/constants/breakpoints.dart';
 import '../../../app/theme/app_colors.dart';
 import '../../../app/theme/app_text_styles.dart';
 import '../../../app/theme/app_theme.dart';
@@ -123,19 +122,26 @@ class ProjectGrid extends StatelessWidget {
     return Obx(() {
       final filter = home.activeProjectFilter.value;
       final filtered = filterProjects(filter);
-      final isWide = !context.isMobile;
-      return Wrap(
-        spacing: 22,
-        runSpacing: 22,
-        children: [
-          for (final p in filtered)
-            SizedBox(
-              width: isWide
-                  ? (Breakpoints.maxContent / 2) - 36
-                  : double.infinity,
-              child: ProjectCard(project: p),
-            ),
-        ],
+      return LayoutBuilder(
+        builder: (context, constraints) {
+          const spacing = 22.0;
+          final available = constraints.maxWidth;
+          final useTwoColumns = available >= 720;
+          final cardWidth = useTwoColumns
+              ? (available - spacing) / 2
+              : available;
+          return Wrap(
+            spacing: spacing,
+            runSpacing: spacing,
+            children: [
+              for (final p in filtered)
+                SizedBox(
+                  width: cardWidth,
+                  child: ProjectCard(project: p),
+                ),
+            ],
+          );
+        },
       );
     });
   }

@@ -375,12 +375,6 @@ class SocialIconRow extends StatelessWidget {
           label: 'GitHub',
           url: PortfolioData.github,
         ),
-        SizedBox(width: 10),
-        SocialIconButton(
-          icon: Icons.mail_outline_rounded,
-          label: 'Email',
-          url: 'mailto:${PortfolioData.email}',
-        ),
       ],
     );
   }

@@ -15,8 +15,8 @@ class PortfolioData {
   static const String phone = '+91-8885416261';
   static const String phoneTel = '+918885416261';
   static const String linkedIn =
-      'https://linkedin.com/in/adithya-vardhanreddy';
-  static const String github = 'https://github.com/';
+      'https://www.linkedin.com/in/adithya-vardhanreddy/';
+  static const String github = 'https://github.com/Adithya6261';
   static const String yearsExperience = '2.5+';
   static const String resumeFileName = 'Adithya_Vardhan_Reddy_Resume.pdf';
   static const String availabilityLabel = 'Available to join immediately';
@@ -67,6 +67,27 @@ class PortfolioData {
       stack: ['Flutter', 'GetX', 'Socket.IO', 'Google Maps', 'Firebase'],
     ),
     ExperienceModel(
+      company: 'Techland IT Solutions',
+      role: 'Flutter Developer',
+      duration: 'Jan 2026 — Present',
+      project: 'BestSeeds',
+      tagline:
+          'Built a full aquaculture supply-chain platform connecting hatcheries, '
+          'farmers, vendors, drivers and field staff across two Flutter apps.',
+      highlights: [
+        'Shipped a 2-app platform (User + Driver/Employee) unifying 5 user roles',
+        'Live vehicle tracking with adaptive throttling — ~60% fewer location API calls',
+        'Crash-proof delivery tracking via SQLite queue + batch sync (100% retention through dead zones)',
+        'Self-healing background tracking service — worst-case gap cut ~75% (6m → ~90s)',
+        'Role-based farm, tank and feed management for farmers, managers and partners',
+        '12-language localization across English + 11 Indian regional languages',
+        'Offline-first browsing of deals and bookings with local cache',
+        'Voice-enabled search for low-literacy / hands-free farmer use',
+        'Proactive GPS / battery / network alerts dropping MTTD below 90s',
+      ],
+      stack: ['Flutter', 'GetX', 'Firebase', 'Google Maps', 'SQLite', 'FCM'],
+    ),
+    ExperienceModel(
       company: 'iGuru Portal Services',
       role: 'Flutter Developer',
       duration: 'Feb 2024 — Jan 2026',
@@ -107,6 +128,30 @@ class PortfolioData {
       stack: ['Flutter', 'Node.js', 'Socket.IO', 'Google Maps', 'Firebase'],
       icon: Icons.directions_car_rounded,
       gradient: [Color(0xFF7C5CFF), Color(0xFF21D4FD)],
+    ),
+    ProjectModel(
+      name: 'BestSeeds',
+      category: 'Aquaculture · Logistics',
+      description:
+          'A digital ecosystem for the aquaculture seed industry — connecting '
+          'hatcheries, farmers, vendors, drivers and field employees across '
+          'two Flutter apps covering marketplace, farm management and live '
+          'delivery tracking.',
+      features: [
+        'Live Vehicle Tracking',
+        'Offline-First Delivery',
+        'Multi-Role Access',
+        'Farm Management',
+        'Voice Search',
+        '12 Languages',
+      ],
+      metrics: [
+        MetricItem(value: '60%', label: 'Fewer GPS calls'),
+        MetricItem(value: '75%', label: 'Smaller tracking gap'),
+      ],
+      stack: ['Flutter', 'GetX', 'Firebase', 'Google Maps', 'SQLite', 'FCM'],
+      icon: Icons.set_meal_rounded,
+      gradient: [Color(0xFF21D4FD), Color(0xFF22C55E)],
     ),
     ProjectModel(
       name: 'iGuru Prep',

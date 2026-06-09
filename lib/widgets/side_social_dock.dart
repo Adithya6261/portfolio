@@ -8,6 +8,7 @@ import '../controllers/contact_controller.dart';
 import '../data/portfolio_data.dart';
 
 class SideSocialDock extends StatelessWidget {
+  
   const SideSocialDock({super.key});
 
   static const List<SocialDockItem> items = [

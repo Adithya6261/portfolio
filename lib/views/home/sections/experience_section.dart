@@ -73,16 +73,22 @@ class ExperienceCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return IntrinsicHeight(
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          if (!context.isMobile)
-            TimelineRail(showTail: !isLast),
-          if (!context.isMobile) const SizedBox(width: 28),
-          Expanded(child: ExperienceContent(experience: experience)),
-        ],
-      ),
+    if (context.isMobile) {
+      return ExperienceContent(experience: experience);
+    }
+    return Stack(
+      children: [
+        Padding(
+          padding: const EdgeInsets.only(left: 52),
+          child: ExperienceContent(experience: experience),
+        ),
+        Positioned(
+          left: 0,
+          top: 0,
+          bottom: 0,
+          child: TimelineRail(showTail: !isLast),
+        ),
+      ],
     );
   }
 }

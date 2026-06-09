@@ -3,7 +3,6 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../data/portfolio_data.dart';
 import '../services/email_service.dart';
 
 class ContactController extends GetxController {
@@ -44,16 +43,11 @@ class ContactController extends GetxController {
     if (!(formKey.currentState?.validate() ?? false)) return;
     isSubmitting.value = true;
 
-    final name = nameController.text.trim();
-    final email = emailController.text.trim();
-    final subject = subjectController.text.trim();
-    final message = messageController.text.trim();
-
     final result = await EmailService.sendContactEmail(
-      name: name,
-      email: email,
-      subject: subject,
-      message: message,
+      name: nameController.text.trim(),
+      email: emailController.text.trim(),
+      subject: subjectController.text.trim(),
+      message: messageController.text.trim(),
     );
 
     isSubmitting.value = false;
@@ -63,13 +57,14 @@ class ContactController extends GetxController {
       return;
     }
 
-    await openMailtoFallback(
-      name: name,
-      email: email,
-      subject: subject,
-      message: message,
+    Get.snackbar(
+      'Could not send',
+      result.message ?? 'Something went wrong. Please try again later.',
+      snackPosition: SnackPosition.BOTTOM,
+      backgroundColor: Colors.red.shade700,
+      colorText: Colors.white,
+      margin: const EdgeInsets.all(16),
     );
-    markSent();
   }
 
   void markSent() {
@@ -80,23 +75,6 @@ class ContactController extends GetxController {
     subjectController.clear();
     messageController.clear();
     Future.delayed(const Duration(seconds: 5), () => isSent.value = false);
-  }
-
-  Future<void> openMailtoFallback({
-    required String name,
-    required String email,
-    required String subject,
-    required String message,
-  }) async {
-    final uri = Uri(
-      scheme: 'mailto',
-      path: PortfolioData.email,
-      queryParameters: {
-        'subject': subject.isEmpty ? 'Portfolio: $name' : subject,
-        'body': 'From: $name <$email>\n\n$message',
-      },
-    );
-    await launchUrl(uri);
   }
 
   Future<void> openLink(String url) async {

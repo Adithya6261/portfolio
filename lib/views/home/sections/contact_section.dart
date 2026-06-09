@@ -118,7 +118,10 @@ class ContactForm extends StatelessWidget {
             () => GradientButton(
               label: resolveLabel(contact),
               icon: resolveIcon(contact),
-              onPressed: contact.submit,
+              onPressed: () {
+                if (contact.isSubmitting.value) return;
+                contact.submit();
+              },
             ),
           ),
         ],

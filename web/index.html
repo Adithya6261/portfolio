@@ -27,46 +27,11 @@
   <link rel="apple-touch-icon" href="icons/Icon-192.png">
 
   <style>
-    html, body { margin: 0; padding: 0; height: 100%; background: #07070B; overflow: hidden; }
+    html, body { margin: 0; padding: 0; height: 100%; background: #07070B; }
     body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
-    #loader {
-      position: fixed; inset: 0;
-      display: flex; align-items: center; justify-content: center;
-      flex-direction: column; gap: 22px;
-      background: radial-gradient(1200px 600px at 30% 20%, rgba(124,92,255,0.25), transparent 60%),
-                  radial-gradient(800px 500px at 80% 80%, rgba(33,212,253,0.18), transparent 60%),
-                  #07070B;
-      transition: opacity 0.6s ease;
-      z-index: 9999;
-    }
-    .logo {
-      width: 56px; height: 56px; border-radius: 14px;
-      background: linear-gradient(135deg, #7C5CFF, #5B8DEF, #21D4FD);
-      display: flex; align-items: center; justify-content: center;
-      color: white; font-weight: 800; font-size: 24px;
-      box-shadow: 0 12px 40px -8px rgba(124,92,255,0.6);
-      animation: pulse 1.6s ease-in-out infinite;
-    }
-    .label { color: #8B8B96; font-size: 13px; letter-spacing: 1.4px; text-transform: uppercase; }
-    @keyframes pulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.06); } }
-    .fade-out { opacity: 0; pointer-events: none; }
   </style>
 </head>
 <body>
-  <div id="loader">
-    <div class="logo">A</div>
-    <div class="label">Loading portfolio…</div>
-  </div>
-
-  <script>
-    window.addEventListener('flutter-first-frame', function () {
-      var el = document.getElementById('loader');
-      if (!el) return;
-      el.classList.add('fade-out');
-      setTimeout(function () { el.remove(); document.body.style.overflow = 'auto'; }, 700);
-    });
-  </script>
-
   <script src="flutter_bootstrap.js" async></script>
 </body>
 </html>
